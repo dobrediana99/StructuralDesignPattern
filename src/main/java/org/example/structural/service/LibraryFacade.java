@@ -2,8 +2,10 @@ package org.example.structural.service;
 
 
 import org.example.structural.entity.Book;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class LibraryFacade {
@@ -37,6 +39,4 @@ public class LibraryFacade {
     public void deleteBook(Long id) {
         bookService.deleteBook(id);
     }
-}
-
 }

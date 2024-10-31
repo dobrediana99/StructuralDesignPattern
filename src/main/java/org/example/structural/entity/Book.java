@@ -1,9 +1,9 @@
 package org.example.structural.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Book {
@@ -14,8 +14,6 @@ public class Book {
     private String title;
     private String author;
     private String category;
-    private boolean featured;
-    private boolean bestseller;
 
     // Constructors
     public Book() {}
@@ -24,8 +22,6 @@ public class Book {
         this.title = title;
         this.author = author;
         this.category = category;
-        this.featured = false;
-        this.bestseller = false;
     }
 
     // Getters and Setters
@@ -41,23 +37,11 @@ public class Book {
     public String getCategory() { return category; }
     public void setCategory(String category) { this.category = category; }
 
-    public boolean isFeatured() { return featured; }
-    public void setFeatured(boolean featured) { this.featured = featured; }
-
-    public boolean isBestseller() { return bestseller; }
-    public void setBestseller(boolean bestseller) { this.bestseller = bestseller; }
     public String getDescription() {
         StringBuilder description = new StringBuilder();
         description.append("Title: ").append(this.title)
                 .append(", Author: ").append(this.author)
                 .append(", Category: ").append(this.category);
-
-        if (this.featured) {
-            description.append(" (Featured)");
-        }
-        if (this.bestseller) {
-            description.append(" (Bestseller)");
-        }
         return description.toString();
     }
 

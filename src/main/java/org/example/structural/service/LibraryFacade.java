@@ -8,14 +8,35 @@ import java.util.List;
 @Component
 public class LibraryFacade {
 
-    // TODO: Use BookService and other services to simplify the interaction with multiple subsystems
+    private final BookService bookService;
 
-    public void addBook(Book book) {
-        // TODO: Add book to the library through service layer
+    @Autowired
+    public LibraryFacade(BookService bookService) {
+        this.bookService = bookService;
     }
 
-    public List<Book> getFeaturedBooks() {
-        // TODO: Return a list of featured books using the decorator pattern
-        return null;
+    // Simplified method to add a book
+    public Book addBook(Book book) {
+        return bookService.saveBook(book);
     }
+
+    // Simplified method to find books by category
+    public List<Book> findBooksByCategory(String category) {
+        return bookService.getBooksByCategory(category);
+    }
+
+    // Additional simplified facade methods
+    public List<Book> getAllBooks() {
+        return bookService.getAllBooks();
+    }
+
+    public Optional<Book> findBookById(Long id) {
+        return bookService.findBookById(id);
+    }
+
+    public void deleteBook(Long id) {
+        bookService.deleteBook(id);
+    }
+}
+
 }

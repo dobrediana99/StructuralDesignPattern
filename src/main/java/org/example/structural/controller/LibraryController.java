@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -36,7 +37,7 @@ public class LibraryController {
     @Operation(summary = "Get a book by ID", description = "Provide an ID to lookup a specific book in the library")
     @GetMapping("/{id}")
     public BookDto getBookById(@ApiParam("ID of the book to retrieve") @PathVariable Long id) {
-        //TODO
+        Optional<Book> book = bookService.findBookById(id); // Implemented in BookService
         return new BookDto();
     }
 
@@ -53,13 +54,14 @@ public class LibraryController {
     public BookDto updateBook(
             @ApiParam("ID of the book to update") @PathVariable Long id,
             @ApiParam( "Updated BookDto object") @RequestBody BookDto updatedBookDto) {
-        //TODO
+        Book book = BookMapper.toEntity(updatedBookDto);
+        Optional<Book> updatedBook = bookService.updateBook(id, book); // Implemented in BookService
         return BookMapper.toDTO(new Book());
     }
 
     @Operation(summary = "Delete a book by ID", description = "Deletes the book with the specified ID from the library")
     @DeleteMapping("/{id}")
     public void deleteBook(@ApiParam("ID of the book to delete") @PathVariable Long id) {
-    //TODO
+        bookService.deleteBook(id); // Implemented in BookService
     }
 }

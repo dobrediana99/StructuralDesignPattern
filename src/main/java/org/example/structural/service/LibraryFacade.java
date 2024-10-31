@@ -19,12 +19,7 @@ public class LibraryFacade {
 
     // Simplified method to add a book
     public Book addBook(Book book) {
-        return bookService.saveBook(book);
-    }
-
-    // Simplified method to find books by category
-    public List<Book> findBooksByCategory(String category) {
-        return bookService.getBooksByCategory(category);
+        return bookService.addBook(book);
     }
 
     // Additional simplified facade methods

@@ -25,13 +25,6 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public Book saveBook(Book book) {
-        return bookRepository.save(book);
-    }
-
-    public List<Book> getBooksByCategory(String category) {
-        return bookRepository.findByCategory(category);
-    }
     public Optional<Book> findBookById(Long id) {
         return bookRepository.findById(id);
     }
@@ -40,4 +33,16 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
+    public Optional<Book> updateBook(Long id, Book updatedBook) {
+        return bookRepository.findById(id).map(existingBook -> {
+            // Update existing book details with the new details
+            existingBook.setTitle(updatedBook.getTitle());
+            existingBook.setAuthor(updatedBook.getAuthor());
+            existingBook.setCategory(updatedBook.getCategory());
+            // Add any other fields as needed
+
+            // Save the updated book
+            return bookRepository.save(existingBook);
+        });
+    }
 }

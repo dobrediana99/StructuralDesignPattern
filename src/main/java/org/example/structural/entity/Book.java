@@ -18,7 +18,8 @@ public class Book {
     // Constructors
     public Book() {}
 
-    public Book(String title, String author, String category) {
+    public Book(Long id, String title, String author, String category) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.category = category;
@@ -39,7 +40,8 @@ public class Book {
 
     public String getDescription() {
         StringBuilder description = new StringBuilder();
-        description.append("Title: ").append(this.title)
+        description.append("Id: ").append(this.id)
+                .append("Title: ").append(this.title)
                 .append(", Author: ").append(this.author)
                 .append(", Category: ").append(this.category);
         return description.toString();

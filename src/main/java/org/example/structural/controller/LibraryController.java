@@ -36,10 +36,8 @@ public class LibraryController {
 
     @Operation(summary = "Get a book by ID", description = "Provide an ID to lookup a specific book in the library")
     @GetMapping("/{id}")
-    public BookDto getBookById(@ApiParam("ID of the book to retrieve") @PathVariable Long id) {
-        Optional<Book> book = bookService.findBookById(id); // Implemented in BookService
-        return new BookDto();
-    }
+    public Optional<Book> getBookById(@ApiParam("ID of the book to retrieve") @PathVariable Long id) {
+        return bookService.findBookById(id); }
 
     @Operation(summary = "Add a new book", description = "Adds a new book to the library and returns the saved BookDto object")
     @PostMapping

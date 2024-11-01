@@ -26,7 +26,7 @@ public class LibraryController {
     }
 
     @Operation(summary = "Retrieve all books", description = "Returns a list of all books in the library as BookDto objects")
-    @GetMapping
+    @GetMapping("/home")
     public List<BookDto> getAllBooks() {
         return bookService.getAllBooks()
                 .stream()

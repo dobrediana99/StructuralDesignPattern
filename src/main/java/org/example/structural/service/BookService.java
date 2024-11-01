@@ -36,6 +36,7 @@ public class BookService {
     public Optional<Book> updateBook(Long id, Book updatedBook) {
         return bookRepository.findById(id).map(existingBook -> {
             // Update existing book details with the new details
+            existingBook.setId(updatedBook.getId());
             existingBook.setTitle(updatedBook.getTitle());
             existingBook.setAuthor(updatedBook.getAuthor());
             existingBook.setCategory(updatedBook.getCategory());
